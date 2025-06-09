@@ -3,7 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>com.mcp</groupId>
         <artifactId>business-app-parent</artifactId>
@@ -12,44 +11,58 @@
 
     <artifactId>userCenter</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-
     <name>User Center</name>
     <description>用户中心服务</description>
 
     <dependencies>
-        <!-- Spring Boot Dependencies -->
+        <!-- Spring Boot Web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         
-        <!-- Database Dependencies -->
+        <!-- MyBatis -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>1.3.5</version>
         </dependency>
+        
+        <!-- MySQL -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.49</version>
         </dependency>
-
         
-        <!-- Dubbo Dependencies -->
+        <!-- Dubbo -->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo</artifactId>
         </dependency>
         
         <!-- MCP SDK -->
+<!--        <dependency>-->
+<!--            <groupId>com.mcp</groupId>-->
+<!--            <artifactId>mcp-sdk</artifactId>-->
+<!--        </dependency>-->
+        
+        <!-- Lombok -->
         <dependency>
-            <groupId>com.mcp</groupId>
-            <artifactId>mcp-sdk</artifactId>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
         
-        <!-- Testing Dependencies -->
+        <!-- Logging -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        
+        <!-- Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -62,6 +75,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <configuration>
+                    <mainClass>com.mcp.user.UserCenterApplication</mainClass>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
@@ -69,9 +86,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <jvmArguments>${jvm.options}</jvmArguments>
-                </configuration>
             </plugin>
         </plugins>
     </build>

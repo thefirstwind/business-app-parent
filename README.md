@@ -1,66 +1,117 @@
-# 业务应用模块
+# MCP Business Application
 
-## 模块说明
+This is a multi-module Spring Boot application with the following components:
 
-项目包含以下业务模块：
+## Modules
 
-- **tradeCenter**: 订单中心服务，处理订单相关业务
-- **userCenter**: 用户中心服务，处理用户相关业务
-- **lgCenter**: 物流中心服务，处理物流相关业务
-- **itemCenter**: 商品中心服务，处理商品相关业务
+1. **User Center (userCenter)** - User management and authentication service
+   - Port: 8080
+   - Database: usercenter
+   - Dubbo Port: 20880
 
-## 系统架构
+2. **Trade Center (tradeCenter)** - Order and transaction management service
+   - Port: 8081
+   - Database: tradecenter
+   - Dubbo Port: 20881
 
-每个业务模块都是独立的Spring Boot应用，通过REST API进行通信。
+3. **Logistics Center (lgCenter)** - Logistics and shipping management service
+   - Port: 8082
+   - Database: lgcenter
+   - Dubbo Port: 20882
 
-## 数据库配置
+4. **Item Center (itemCenter)** - Product catalog and inventory management service
+   - Port: 8083
+   - Database: itemcenter
+   - Dubbo Port: 20883
 
-项目使用MySQL数据库，需要创建以下数据库：
+5. **Payment Gateway (paygw)** - Payment processing service
+   - Port: 8084
+   - Database: paygw
+   - Dubbo Port: 20884
 
-- tradecenter: 订单中心数据库
-- usercenter: 用户中心数据库
-- lgcenter: 物流中心数据库
-- itemcenter: 商品中心数据库
+## Technologies
 
-### 数据库初始化
+- Java 8
+- Spring Boot 1.5.22.RELEASE
+- MyBatis 1.3.5
+- MySQL 5.1.49
+- Dubbo 2.7.15
+- Logback
 
-每个模块都包含SQL初始化脚本，位于`src/main/resources/sql/schema.sql`。
+## Setup
 
-执行初始化脚本的方法：
+### Prerequisites
+
+- Java 8 or higher
+- Maven 3.6 or higher
+- MySQL 5.7 or higher
+
+### Database Setup
+
+Run the database setup script to create all required databases:
 
 ```bash
-# 进入MySQL控制台
-mysql -u root -p
-
-# 在MySQL控制台中执行以下命令
-source /path/to/schema.sql
+./setup_databases.sh
 ```
 
-或者使用图形化工具（如Navicat、MySQL Workbench等）导入并执行SQL文件。
+### Build
 
-## 启动顺序
+Build the project using Maven:
 
-推荐按以下顺序启动服务：
+```bash
+mvn clean package
+```
 
-1. 用户中心 (userCenter)
-2. 商品中心 (itemCenter)
-3. 物流中心 (lgCenter)
-4. 订单中心 (tradeCenter)
+### Run
 
-## 端口配置
+You can run each module separately:
 
-- 用户中心: 8082
-- 商品中心: 8084
-- 物流中心: 8083
-- 订单中心: 8081
+```bash
+java -jar userCenter/target/userCenter-1.0.0-SNAPSHOT.jar
+java -jar tradeCenter/target/tradeCenter-1.0.0-SNAPSHOT.jar
+java -jar lgCenter/target/lgCenter-1.0.0-SNAPSHOT.jar
+java -jar itemCenter/target/itemCenter-1.0.0-SNAPSHOT.jar
+java -jar paygw/target/paygw-1.0.0-SNAPSHOT.jar
+```
 
-## 业务功能
+Or run them using Spring Boot Maven plugin:
 
-### 用户订单查询功能
+```bash
+cd userCenter && mvn spring-boot:run
+cd tradeCenter && mvn spring-boot:run
+cd lgCenter && mvn spring-boot:run
+cd itemCenter && mvn spring-boot:run
+cd paygw && mvn spring-boot:run
+```
 
-可以根据用户ID查询该用户购买的订单，并同时查询订单对应的物流信息。
+## API Documentation
 
-接口：
-- GET `/api/user/orders/{userId}` - 查询用户的所有订单及物流信息
-- GET `/api/user/orders/{userId}/{orderId}` - 查询用户特定订单详情及物流信息 # mcp-tool-manager
-# business-app-parent
+Each service exposes RESTful APIs:
+
+- User Center: http://localhost:8080/
+- Trade Center: http://localhost:8081/
+- Logistics Center: http://localhost:8082/
+- Item Center: http://localhost:8083/
+- Payment Gateway: http://localhost:8084/
+
+## Architecture
+
+```
++----------------+    +----------------+    +----------------+
+|   userCenter   |    |  tradeCenter   |    |    lgCenter    |
+|   (8080/20880) |    |  (8081/20881)  |    |  (8082/20882)  |
++--------+-------+    +--------+-------+    +--------+-------+
+         |                     |                     |
+         +----------+----------+----------+----------+
+                    |                     |
+          +---------+---------+  +--------+--------+
+          |    itemCenter     |  |      paygw      |
+          |   (8083/20883)    |  |   (8084/20884)  |
+          +-------------------+  +-----------------+
+```
+
+## Cross-Service Communication
+
+Services communicate with each other using:
+- Dubbo RPC for synchronous operations
+- RESTful APIs over HTTP for simple operations
