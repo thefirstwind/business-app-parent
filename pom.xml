@@ -33,6 +33,9 @@
         <lombok.version>1.16.22</lombok.version>
         <logback.version>1.1.11</logback.version>
         <slf4j.version>1.7.25</slf4j.version>
+        <nacos.version>2.2.3</nacos.version>
+        <dubbo-registry-nacos.version>2.7.15</dubbo-registry-nacos.version>
+        <guava.version>31.1-jre</guava.version>
     </properties>
 
     <dependencyManagement>
@@ -50,6 +53,27 @@
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo</artifactId>
                 <version>${dubbo.version}</version>
+            </dependency>
+            
+            <!-- Dubbo Nacos Registry -->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-registry-nacos</artifactId>
+                <version>${dubbo-registry-nacos.version}</version>
+            </dependency>
+            
+            <!-- Nacos Client -->
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>${nacos.version}</version>
+            </dependency>
+            
+            <!-- Google Guava -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
             </dependency>
             
             <!-- MCP SDK 依赖 -->

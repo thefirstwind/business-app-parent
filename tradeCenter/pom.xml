@@ -39,10 +39,32 @@
             <artifactId>dubbo</artifactId>
         </dependency>
         
+        <!-- Nacos -->
+        <dependency>
+            <groupId>com.alibaba.nacos</groupId>
+            <artifactId>nacos-client</artifactId>
+        </dependency>
+        
         <!-- MCP SDK -->
         <dependency>
             <groupId>com.mcp</groupId>
             <artifactId>mcp-sdk</artifactId>
+        </dependency>
+        
+        <!-- UserCenter API -->
+        <dependency>
+            <groupId>com.mcp</groupId>
+            <artifactId>userCenter</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <classifier>classes</classifier>
+        </dependency>
+        
+        <!-- LogisticsCenter API -->
+        <dependency>
+            <groupId>com.mcp</groupId>
+            <artifactId>lgCenter</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <classifier>classes</classifier>
         </dependency>
         
         <!-- Lombok -->

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mcp.logistics.mapper.LogisticsTraceMapper">
+
+    <resultMap id="traceMap" type="com.mcp.logistics.entity.LogisticsTrace">
+        <id property="id" column="id"/>
+        <result property="logisticsId" column="logistics_id"/>
+        <result property="logisticsNo" column="logistics_no"/>
+        <result property="action" column="action"/>
+        <result property="location" column="location"/>
+        <result property="operator" column="operator"/>
+        <result property="createdAt" column="created_at"/>
+    </resultMap>
+
+    <sql id="traceColumns">
+        id, logistics_id, logistics_no, action, location, operator, created_at
+    </sql>
+
+    <!-- 根据ID查询物流轨迹 -->
+    <select id="getTraceById" resultMap="traceMap">
+        SELECT
+        <include refid="traceColumns"/>
+        FROM logistics_trace
+        WHERE id = #{id}
+    </select>
+
+    <!-- 根据物流ID查询物流轨迹列表 -->
+    <select id="getTracesByLogisticsId" resultMap="traceMap">
+        SELECT
+        <include refid="traceColumns"/>
+        FROM logistics_trace
+        WHERE logistics_id = #{logisticsId}
+        ORDER BY created_at DESC
+    </select>
+
+    <!-- 根据物流单号查询物流轨迹列表 -->
+    <select id="getTracesByLogisticsNo" resultMap="traceMap">
+        SELECT
+        <include refid="traceColumns"/>
+        FROM logistics_trace
+        WHERE logistics_no = #{logisticsNo}
+        ORDER BY created_at DESC
+    </select>
+
+    <!-- 插入物流轨迹 -->
+    <insert id="insertTrace" parameterType="com.mcp.logistics.entity.LogisticsTrace" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO logistics_trace (
+            logistics_id, logistics_no, action, location, operator
+        ) VALUES (
+            #{logisticsId}, #{logisticsNo}, #{action}, #{location}, #{operator}
+        )
+    </insert>
+
+    <!-- 批量插入物流轨迹 -->
+    <insert id="batchInsertTraces" parameterType="java.util.List">
+        INSERT INTO logistics_trace (
+            logistics_id, logistics_no, action, location, operator
+        ) VALUES
+        <foreach collection="traces" item="trace" separator=",">
+            (#{trace.logisticsId}, #{trace.logisticsNo}, #{trace.action}, #{trace.location}, #{trace.operator})
+        </foreach>
+    </insert>
+</mapper> 
