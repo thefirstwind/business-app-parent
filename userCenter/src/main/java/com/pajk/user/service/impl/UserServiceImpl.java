@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  * 用户服务实现类
  */
 @Component
-//@DubboService(version = "1.0.0", group = "mcp")
+@DubboService(version = "1.0.0")
 @Slf4j
 public class UserServiceImpl implements UserService {
     
@@ -51,6 +51,7 @@ public class UserServiceImpl implements UserService {
     }
     
     @Override
+    @Tool(description = "删除用户信息")
     public boolean deleteUser(Long id) {
         log.info("删除用户：{}", id);
         return userMapper.deleteUser(id) > 0;
