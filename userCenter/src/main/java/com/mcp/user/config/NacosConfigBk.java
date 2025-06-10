@@ -7,12 +7,12 @@ import com.alibaba.nacos.api.exception.NacosException;
 import com.alibaba.nacos.api.naming.NamingService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import java.util.Properties;
 
-@Configuration
-public class NacosConfig {
+//@Slf4j
+//@Configuration
+public class NacosConfigBk {
 
     @Value("${nacos.server-addr}")
     private String serverAddr;
@@ -28,6 +28,26 @@ public class NacosConfig {
 
     @Value("${nacos.auth.value}")
     private String password;
+
+    @Value("${dubbo.provider.group}")
+    private String group;
+
+    @Value("${dubbo.scan.base-packages}")
+    private String dataId;
+
+//    @Bean
+//    public ConfigService configService() throws NacosException {
+//        try {
+//            Properties properties = createNacosProperties();
+//            ConfigService configService = NacosFactory.createConfigService(properties);
+//            String content = configService.getConfig("com.mcp.user.service.UserService", "mapping", 5000);
+//            log.info("configService content: {}", content);
+//            return configService;
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 
     /**
      * 创建Nacos配置服务实例
