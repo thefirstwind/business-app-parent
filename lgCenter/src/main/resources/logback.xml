@@ -21,7 +21,7 @@
     </appender>
 
     <!-- 日志级别 -->
-    <logger name="com.pajk.user" level="DEBUG"/>
+    <logger name="com.pajk.logistics" level="DEBUG"/>
     <logger name="org.springframework" level="INFO"/>
     <logger name="org.mybatis" level="INFO"/>
 

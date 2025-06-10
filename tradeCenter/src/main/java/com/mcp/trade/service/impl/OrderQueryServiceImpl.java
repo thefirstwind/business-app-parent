@@ -1,20 +1,19 @@
 package com.mcp.trade.service.impl;
 
-import com.mcp.logistics.entity.Logistics;
-import com.mcp.logistics.entity.LogisticsTrace;
-import com.mcp.logistics.service.LogisticsService;
+import com.pajk.logistics.entity.Logistics;
+import com.pajk.logistics.entity.LogisticsTrace;
+import com.pajk.logistics.service.LogisticsService;
 import com.mcp.trade.dto.LogisticsDTO;
 import com.mcp.trade.dto.LogisticsTraceDTO;
 import com.mcp.trade.dto.OrderDTO;
 import com.mcp.trade.entity.Order;
 import com.mcp.trade.service.OrderQueryService;
 import com.mcp.trade.service.OrderService;
-import com.mcp.user.entity.User;
-import com.mcp.user.service.UserService;
+import com.pajk.user.entity.User;
+import com.pajk.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
