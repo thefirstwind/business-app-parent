@@ -126,7 +126,22 @@
                     </execution>
                 </executions>
             </plugin>
-            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source> <!-- 或者你使用的 Java 版本 -->
+                    <target>${java.version}</target> <!-- 或者你使用的 Java 版本 -->
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
             <!-- Create an additional JAR with just the classes (for dependencies) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

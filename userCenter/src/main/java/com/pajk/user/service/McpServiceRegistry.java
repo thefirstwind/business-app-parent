@@ -40,6 +40,10 @@ public class McpServiceRegistry {
     @Value("${nacos.mcp.protocal}")
     private String nacosMcpProtocal;
 
+    @Value("${nacos.mcp.domain}")
+    private String nacosMcpDomain;
+
+
     private NamingService namingService;
 
     @PostConstruct
@@ -68,6 +72,7 @@ public class McpServiceRegistry {
             metadata.put("protocol", nacosMcpProtocal);
             metadata.put("mcp-version", nacosMcpVersion);
             metadata.put("mcp-tools-count", String.valueOf(tools.size()));
+            metadata.put("domain", nacosMcpDomain);
 
             // 将工具列表转为JSON并添加到元数据
             for (int i = 0; i < tools.size(); i++) {
