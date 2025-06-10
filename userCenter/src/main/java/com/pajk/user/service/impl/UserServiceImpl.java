@@ -1,5 +1,7 @@
 package com.pajk.user.service.impl;
 
+import com.mycompany.aigw.sdk.tool.annotation.Tool;
+import com.mycompany.aigw.sdk.tool.annotation.ToolParam;
 import com.pajk.user.entity.User;
 import com.pajk.user.mapper.UserMapper;
 import com.pajk.user.service.UserService;
@@ -12,7 +14,7 @@ import org.springframework.stereotype.Component;
  * 用户服务实现类
  */
 @Component
-@DubboService(version = "1.0.0", group = "mcp")
+//@DubboService(version = "1.0.0", group = "mcp")
 @Slf4j
 public class UserServiceImpl implements UserService {
     
@@ -20,26 +22,30 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
     
     @Override
-    public User getUserById(Long id) {
+    @Tool(description = "根据ID查询用户")
+    public User getUserById(@ToolParam(description = "用户ID")  Long id) {
         log.info("根据ID查询用户：{}", id);
         return userMapper.getUserById(id);
     }
     
     @Override
-    public User getUserByUsername(String username) {
+    @Tool(description = "根据名查询用户")
+    public User getUserByUsername(@ToolParam(description = "用户名")  String username) {
         log.info("根据用户名查询用户：{}", username);
         return userMapper.getUserByUsername(username);
     }
     
     @Override
-    public Long createUser(User user) {
+    @Tool(description = "创建新用户")
+    public Long createUser(@ToolParam(description = "用户对象") User user) {
         log.info("创建用户：{}", user.getUsername());
         userMapper.insertUser(user);
         return user.getId();
     }
     
     @Override
-    public boolean updateUser(User user) {
+    @Tool(description = "更新用户信息")
+    public boolean updateUser(@ToolParam(description = "用户对象") User user) {
         log.info("更新用户：{}", user.getId());
         return userMapper.updateUser(user) > 0;
     }

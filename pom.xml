@@ -61,7 +61,11 @@
                 <artifactId>dubbo</artifactId>
                 <version>${dubbo.version}</version>
             </dependency>
-            
+<!--            <dependency>-->
+<!--                <groupId>org.apache.dubbo</groupId>-->
+<!--                <artifactId>dubbo-spring-boot-starter</artifactId>-->
+<!--                <version>${dubbo.version}</version>-->
+<!--            </dependency>-->
             <!-- Dubbo Nacos Registry -->
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
@@ -81,6 +85,8 @@
                 <artifactId>nacos-spring-context</artifactId>
                 <version>${nacos-spring-context.version}</version>
             </dependency>
+
+
             <!-- Google Guava -->
             <dependency>
                 <groupId>com.google.guava</groupId>
@@ -89,11 +95,11 @@
             </dependency>
             
             <!-- MCP SDK 依赖 -->
-            <dependency>
-                <groupId>com.mcp</groupId>
-                <artifactId>mcp-sdk</artifactId>
-                <version>${mcp-sdk.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>com.mcp</groupId>-->
+<!--                <artifactId>mcp-sdk</artifactId>-->
+<!--                <version>${mcp-sdk.version}</version>-->
+<!--            </dependency>-->
             
             <!-- MyBatis -->
             <dependency>

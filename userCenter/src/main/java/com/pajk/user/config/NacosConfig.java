@@ -1,4 +1,4 @@
-package com.pajk.user.nacos;
+package com.pajk.user.config;
 
 import com.alibaba.nacos.api.NacosFactory;
 import com.alibaba.nacos.api.config.ConfigService;

@@ -58,10 +58,10 @@
         </dependency>
         
         <!-- MCP SDK -->
-        <dependency>
-            <groupId>com.mcp</groupId>
-            <artifactId>mcp-sdk</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.mcp</groupId>-->
+<!--            <artifactId>mcp-sdk</artifactId>-->
+<!--        </dependency>-->
         
         <!-- Lombok -->
         <dependency>

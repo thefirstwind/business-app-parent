@@ -1,6 +1,7 @@
-package com.pajk.user.nacos;
+package com.pajk.user.controller;
 
 
+import com.pajk.user.service.NacosService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
