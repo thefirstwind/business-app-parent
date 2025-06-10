@@ -9,10 +9,10 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>userCenter</artifactId>
+    <artifactId>userQKCenter</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>User Center</name>
-    <description>用户中心服务</description>
+    <name>User QK Center</name>
+    <description>企康用户中心服务</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -120,7 +120,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>com.pajk.user.UserCenterApplication</mainClass>
+                    <mainClass>com.pajk.userqk.UserCenterApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
@@ -161,7 +161,7 @@
                         <configuration>
                             <classifier>classes</classifier>
                             <includes>
-                                <include>com/pajk/user/**</include>
+                                <include>com/pajkqk/user/**</include>
                             </includes>
                         </configuration>
                     </execution>

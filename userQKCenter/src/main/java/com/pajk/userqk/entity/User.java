@@ -1,4 +1,4 @@
-package com.pajk.user.entity;
+package com.pajk.userqk.entity;
 
 import lombok.Data;
 

@@ -14,6 +14,7 @@
 
     <modules>
         <module>userCenter</module>
+        <module>userQKCenter</module>
         <module>lgCenter</module>
         <module>itemCenter</module>
         <module>paygw</module>
