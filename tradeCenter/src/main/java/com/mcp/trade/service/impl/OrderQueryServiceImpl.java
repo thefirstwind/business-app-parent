@@ -1,5 +1,6 @@
 package com.mcp.trade.service.impl;
 
+import com.mycompany.aigw.sdk.tool.annotation.Tool;
 import com.pajk.logistics.entity.Logistics;
 import com.pajk.logistics.entity.LogisticsTrace;
 import com.pajk.logistics.service.LogisticsService;
@@ -25,19 +26,21 @@ import java.util.stream.Collectors;
  * 订单查询服务实现类，整合订单和物流信息
  */
 @Service
-@DubboService(version = "1.0.0", group = "mcp")
+@DubboService(version = "1.0.0")
 @Slf4j
 public class OrderQueryServiceImpl implements OrderQueryService {
     
     @Autowired
     private OrderService orderService;
     
-    @DubboReference(version = "1.0.0", group = "mcp", check = false, timeout = 3000)
+    @DubboReference(version = "1.0.0", check = false, timeout = 3000)
     private UserService userService;
     
-    @DubboReference(version = "1.0.0", group = "mcp", check = false, timeout = 3000)
+    @DubboReference(version = "1.0.0", check = false, timeout = 3000)
     private LogisticsService logisticsService;
-    
+
+
+    @Tool(description = "根据用户ID查询代物流信息的订单")
     @Override
     public List<OrderDTO> getOrdersWithLogisticsByUserId(Long userId) {
         log.info("根据用户ID查询订单列表，包含物流信息：{}", userId);
@@ -81,7 +84,8 @@ public class OrderQueryServiceImpl implements OrderQueryService {
         
         return orderDTOs;
     }
-    
+
+    @Tool(description = "根据订单ID查询订单号")
     @Override
     public OrderDTO getOrderWithLogisticsById(Long orderId) {
         log.info("根据订单ID查询订单详情，包含物流信息：{}", orderId);
@@ -95,7 +99,8 @@ public class OrderQueryServiceImpl implements OrderQueryService {
         
         return enrichOrderWithUserAndLogistics(order);
     }
-    
+
+    @Tool(description = "根据订单No查询订单信息")
     @Override
     public OrderDTO getOrderWithLogisticsByOrderNo(String orderNo) {
         log.info("根据订单编号查询订单详情，包含物流信息：{}", orderNo);

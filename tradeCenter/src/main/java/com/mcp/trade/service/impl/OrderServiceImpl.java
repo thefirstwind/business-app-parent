@@ -14,7 +14,7 @@ import java.util.List;
  * 订单服务实现类
  */
 @Service
-@DubboService(version = "1.0.0", group = "mcp")
+@DubboService(version = "1.0.0")
 @Slf4j
 public class OrderServiceImpl implements OrderService {
     

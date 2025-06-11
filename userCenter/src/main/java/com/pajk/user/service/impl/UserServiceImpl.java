@@ -20,7 +20,15 @@ public class UserServiceImpl implements UserService {
     
     @Autowired
     private UserMapper userMapper;
-    
+
+    @Override
+    @Tool(description = "hello")
+    public String sayHello() {
+        log.info("hello");
+        return "hello";
+    }
+
+
     @Override
     @Tool(description = "根据ID查询用户")
     public User getUserById(@ToolParam(description = "用户ID")  Long id) {

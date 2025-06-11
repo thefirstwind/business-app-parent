@@ -1,0 +1,55 @@
+dubbo:
+  application:
+    name: ${spring.application.name}
+    qos-enable: false
+  consumer:
+    check: false
+  protocol:
+    name: dubbo
+    port: 20882
+  provider:
+    timeout: 3000
+    version: 1.0.0
+  reference:
+    check: false
+  registry:
+    address: nacos://${nacos.server-addr}?namespace=${nacos.namespace}
+    parameters:
+      check: false
+  scan:
+    base-packages: com.pajk.logistics.service
+logging:
+  level:
+    com:
+      pajk:
+        logistics: DEBUG
+    org:
+      apache:
+        dubbo: DEBUG
+    root: INFO
+mcp:
+  app-name: ${spring.application.name}
+  config-group: ${nacos.mcp.group}
+  timeout-ms: 3000
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.pajk.logistics.entity
+nacos:
+  mcp:
+    domain: 物流,快递
+    enabled: true
+    group: MCP_GROUP
+    protocal: MCP
+    version: 1.0.0
+  namespace: public
+  server-addr: 127.0.0.1:8848
+server:
+  port: 8082
+spring:
+  application:
+    name: logistics
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: root
+    url: jdbc:mysql://localhost:3306/lgcenter?useSSL=false&characterEncoding=utf-8
+    username: root

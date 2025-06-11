@@ -19,6 +19,7 @@
         <module>itemCenter</module>
         <module>paygw</module>
         <module>tradeCenter</module>
+        <module>mcpClient</module>
     </modules>
 
     <properties>

@@ -6,7 +6,8 @@ import com.pajk.userqk.entity.User;
  * 用户服务接口
  */
 public interface UserService {
-    
+
+    String sayHello();
     /**
      * 根据ID查询用户
      * 

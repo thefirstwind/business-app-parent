@@ -1,5 +1,6 @@
 package com.pajk.logistics.service.impl;
 
+import com.mycompany.aigw.sdk.tool.annotation.Tool;
 import com.pajk.logistics.entity.Logistics;
 import com.pajk.logistics.entity.LogisticsTrace;
 import com.pajk.logistics.mapper.LogisticsMapper;
@@ -17,7 +18,7 @@ import java.util.List;
  * 物流服务实现类
  */
 @Service
-@DubboService(version = "1.0.0", group = "mcp")
+@DubboService(version = "1.0.0")
 @Slf4j
 public class LogisticsServiceImpl implements LogisticsService {
     
@@ -26,8 +27,9 @@ public class LogisticsServiceImpl implements LogisticsService {
     
     @Autowired
     private LogisticsTraceMapper logisticsTraceMapper;
-    
+
     @Override
+    @Tool(description = "根据ID查询物流信息")
     public Logistics getLogisticsById(Long id) {
         log.info("根据ID查询物流信息：{}", id);
         Logistics logistics = logisticsMapper.getLogisticsById(id);
@@ -38,8 +40,9 @@ public class LogisticsServiceImpl implements LogisticsService {
         }
         return logistics;
     }
-    
+
     @Override
+    @Tool(description = "根据快递单号查询物流信息")
     public Logistics getLogisticsByLogisticsNo(String logisticsNo) {
         log.info("根据物流单号查询物流信息：{}", logisticsNo);
         Logistics logistics = logisticsMapper.getLogisticsByLogisticsNo(logisticsNo);
@@ -50,8 +53,9 @@ public class LogisticsServiceImpl implements LogisticsService {
         }
         return logistics;
     }
-    
+
     @Override
+    @Tool(description = "根据订单ID查询物流信息")
     public Logistics getLogisticsByOrderId(Long orderId) {
         log.info("根据订单ID查询物流信息：{}", orderId);
         Logistics logistics = logisticsMapper.getLogisticsByOrderId(orderId);
@@ -62,8 +66,9 @@ public class LogisticsServiceImpl implements LogisticsService {
         }
         return logistics;
     }
-    
+
     @Override
+    @Tool(description = "根据订单No查询物流信息")
     public Logistics getLogisticsByOrderNo(String orderNo) {
         log.info("根据订单编号查询物流信息：{}", orderNo);
         Logistics logistics = logisticsMapper.getLogisticsByOrderNo(orderNo);
